@@ -1,0 +1,22 @@
+.auth-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.auth-left{
+    width: 30vw;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container{
+    padding: 50px 20px;
+    width: 25vw;
+}
+
+.login-footer{
+    padding: 0;
+}

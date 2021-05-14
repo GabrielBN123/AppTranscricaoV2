@@ -24,10 +24,11 @@ use App\Http\Controllers\{
 | ROTAS DO PULPITO
 |--------------------------------------------------------------------------
 */
+
 Route::group([
     'middleware' => ['auth', 'role:pulpito'],
     'prefix' => 'painel-pulpito'
-], function(){
+], function () {
     Route::get('/', [PulpitoController::class, 'index'])->name('painel.pulpito.index');
     Route::get('/config', [PulpitoController::class, 'index'])->name('painel.pulpito.config');
 });
@@ -40,7 +41,7 @@ Route::group([
 Route::group([
     'middleware' => ['auth', 'role:recepcao'],
     'prefix' => 'painel-recepcao'
-], function(){
+], function () {
     Route::get('/', [RecepcaoController::class, 'index'])->name('painel.recepcao.index');
 });
 
@@ -52,8 +53,17 @@ Route::group([
 Route::group([
     'middleware' => ['auth', 'role:transcricao'],
     'prefix' => 'painel-transcricao'
-], function(){
+], function () {
     Route::get('/', [TranscricaoController::class, 'index'])->name('painel.transcricao.index');
 });
 
-require __DIR__.'/auth.php';
+/*
+|--------------------------------------------------------------------------
+| ROTAS DA CADASTRAR
+|--------------------------------------------------------------------------
+*/
+Route::get('/cadastrar', function () {
+    return view('cadastrar');
+})->name('painel.transcricao.index');
+
+require __DIR__ . '/auth.php';

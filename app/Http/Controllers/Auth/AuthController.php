@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function index(){
+        if(Auth::check()){
+            return $this->redirection(Auth::user()->nivel);
+        }
         return view('login');
     }
 
@@ -23,20 +26,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            switch(Auth::user()->nivel){
-                case 'recepcao':
-                        return redirect()->route('painel.recepcao.index');
-                    break;
-                case 'transcricao':
-                    return redirect()->route('painel.transcricao.index');
-                    break;
-                case 'pulpito':
-                    return redirect()->route('painel.pulpito.index');
-                    break;
-                default:
-                    return redirect()->route('logout');
-            }
+            $this->redirection(Auth::user()->nivel);
         }
 
         return back()->withInput()->withErrors([
@@ -49,5 +39,21 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login');
+    }
+
+    public function redirection($nivel){
+        switch($nivel){
+            case 'recepcao':
+                    return redirect()->route('painel.recepcao.index');
+                break;
+            case 'transcricao':
+                return redirect()->route('painel.transcricao.index');
+                break;
+            case 'pulpito':
+                return redirect()->route('painel.pulpito.index');
+                break;
+            default:
+                return redirect()->route('logout');
+        }
     }
 }

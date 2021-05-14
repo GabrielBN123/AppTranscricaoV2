@@ -15,6 +15,16 @@ class CreateFormulariosTable extends Migration
     {
         Schema::create('formularios', function (Blueprint $table) {
             $table->id();
+            $table->string('apresentacao')->nullable();
+            $table->string('aviso')->nullable();
+            $table->string('pedidoOracao')->nullable();
+            $table->string('Felicitacao')->nullable();
+            $table->string('pedidoLouvor')->nullable();
+            $table->string('acaoGracas')->nullable();
+            $table->string('apresentacaoRN')->nullable();
+            $table->string('pedidoComunhao')->nullable();
+            $table->string('cartaApresentacao')->nullable();
+            $table->foreign('userID')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -15,12 +15,12 @@
             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
                 aria-labelledby="panelsStayOpen-headingOne">
                 <div class="accordion-body">
-                    @for ($i = 0, $count = 3; $i < $count; $i++)
+                    @foreach ($formulario as $item)
                         <div class="alert alert-light alert-dismissible border border-primary fade show">
-                            Teste
+                                {{ $item->apresentacao }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
         </div>

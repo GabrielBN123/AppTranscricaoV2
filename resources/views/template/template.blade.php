@@ -12,7 +12,7 @@
 <body>
     @include('painel.componentes.navbar')
 
-    <div class="conteudo">
+    <div class="conteudo bg-secondary bg-gradient">
         @yield('content')
     </div>
 

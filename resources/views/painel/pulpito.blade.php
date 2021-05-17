@@ -3,10 +3,9 @@
 @section('title', 'Painel')
 
 @section('content')
-    <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion px-5 pt-3" id="accordionPanelsStayOpenExample">
         @foreach ($forms as $title => $id)
-            <div class="accordion-item">
-
+            <div class="accordion-item pb-1 bg-secondary">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingTwo-{{ $id }}">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"

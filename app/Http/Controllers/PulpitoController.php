@@ -13,6 +13,19 @@ class PulpitoController extends Controller
 
         // dd($formulario);
 
-        return view('painel.pulpito', compact('formulario'));
+        return view('painel.pulpito', [
+            'formulario'=> $formulario, 
+            'forms' => [
+                'Apresentação de Visitante' => 'apresentacao',
+                'Avisos' => 'aviso',
+                'Pedidos de Oração' => 'pedidoOracao',
+                'Felicitações' => 'Felicitacao',
+                'Pedidos de Louvor' => 'pedidoLouvor',
+                'Ação de Graças' => 'acaoGracas',
+                'Apresentação de Recém Nascidos' => 'apresentacaoRN',
+                'Pedido de Comunhão' => 'pedidoComunhao',
+                'Carta de Apresentação' => 'cartaApresentacao',
+            ]
+        ]);
     }
 }

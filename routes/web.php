@@ -30,6 +30,7 @@ Route::group([
     'prefix' => 'painel-pulpito'
 ], function () {
     Route::get('/', [PulpitoController::class, 'index'])->name('painel.pulpito.index');
+    Route::get('/', [PulpitoController::class, 'index'])->name('painel');
     Route::get('/config', [PulpitoController::class, 'index'])->name('painel.pulpito.config');
 });
 

@@ -30,7 +30,7 @@ Route::group([
     'prefix' => 'painel-pulpito'
 ], function () {
     Route::get('/', [PulpitoController::class, 'index'])->name('painel.pulpito.index');
-    Route::get('/', [PulpitoController::class, 'index'])->name('painel');
+    //Route::get('/', [PulpitoController::class, 'index'])->name('painel');
     Route::get('/config', [PulpitoController::class, 'index'])->name('painel.pulpito.config');
 });
 
@@ -63,8 +63,7 @@ Route::group([
 | ROTAS DA CADASTRAR
 |--------------------------------------------------------------------------
 */
-Route::get('/cadastrar', function () {
-    return view('cadastrar');
-})->name('painel.transcricao.index');
+Route::post('/cadastrar', [UserController::class, 'novoUsuario'])->name('novo.usuario');
+Route::get('/cadastrar', [UserController::class, 'create'])->name('cadastrar.usuario');
 
 require __DIR__ . '/auth.php';

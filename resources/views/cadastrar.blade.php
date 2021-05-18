@@ -24,23 +24,38 @@
                         <hr>
                     </div>
                     <div class="login-body">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('novo.usuario') }}">
                             @csrf
                             <div class="input-group mb-3">
+                                <input type="text" name="nome" value="{{ old('nome') }}"
+                                    class="form-control bg-dark border-dark text-light" placeholder="Digite seu Nome"
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                    title="Seu nome Completo">
+                            </div>
+                            <div class="input-group mb-3">
                                 <input type="text" name="email" value="{{ old('email') }}"
-                                    class="form-control bg-dark border-dark text-light" placeholder="Digite seu login"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <span class="input-group-text bg-dark text-light border-dark" id="basic-addon2"><i
-                                        class="fas fa-user"></i></span>
+                                    class="form-control bg-dark border-dark text-light" placeholder="Digite seu E-mail"
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                    title="Este E-mail será utilizado para acessar sua conta">
                             </div>
                             <div class="input-group mb-3">
                                 <input type="password" id="inputpassword" name="password"
                                     class="form-control bg-dark border-dark text-light" placeholder="Digite sua senha"
                                     aria-label="Recipient's password" aria-describedby="button-addon2">
-                                <button class="btn btn-dark" type="button" id="button-addon2"><i id="iconeye"
-                                        class="far fa-eye"></i></button>
+                                <button class="btn btn-dark" type="button" id="button-addon2">
+                                    <i id="iconeye" class="far fa-eye"></i>
+                                </button>
                             </div>
-                            <button class="btn btn-outline-secondary w-100">Entrar</button>
+                            <div class="input-group mb-3">
+                                <select name="nivel" class="form-select bg-dark border-dark text-light"
+                                    aria-label="Default select example">
+                                    <option selected>Escolha sua função</option>
+                                    <option value="recepcao">Recepção</option>
+                                    <option value="transcricao">Transcrição</option>
+                                    <option value="pulpito">Pulpito</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-outline-secondary w-100">Cadastrar</button>
                         </form>
                     </div>
                     <div class="login-footer mt-2">

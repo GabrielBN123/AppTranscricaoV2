@@ -25,7 +25,8 @@ class PulpitoController extends Controller
                 'Apresentação de Recém Nascidos' => 'apresentacaoRN',
                 'Pedido de Comunhão' => 'pedidoComunhao',
                 'Carta de Apresentação' => 'cartaApresentacao',
-            ]
+            ],
+            'rotaindex' => route('painel.pulpito.index')
         ]);
     }
 }

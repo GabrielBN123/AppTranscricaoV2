@@ -12,4 +12,14 @@ class UserController extends Controller
             'dados' => User::where('id', 1)->with('pessoa', 'pessoa.instituicao')->get()
         ]);
     }
+
+    public function create()
+    {
+        return view('cadastrar');
+    }
+
+    public function novoUsuario()
+    {
+       dd('Cadastrando Novo Usuario');
+    }
 }

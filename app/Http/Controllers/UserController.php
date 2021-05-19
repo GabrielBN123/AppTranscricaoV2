@@ -7,7 +7,8 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('pasta1.arquivo', [
             'dados' => User::where('id', 1)->with('pessoa', 'pessoa.instituicao')->get()
         ]);
@@ -18,8 +19,16 @@ class UserController extends Controller
         return view('cadastrar');
     }
 
-    public function novoUsuario()
+    public function novoUsuario(Request $request)
     {
-       dd('Cadastrando Novo Usuario');
+        // $user = User::create([$request->all()]);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'nivel' => $request->nivel
+        ]);
+
+        return redirect()->route('login');
     }
 }

@@ -27,13 +27,13 @@
                         <form method="POST" action="{{ route('novo.usuario') }}">
                             @csrf
                             <div class="input-group mb-3">
-                                <input type="text" name="nome" value="{{ old('nome') }}"
+                                <input type="text" name="name" id="name" value="{{ old('name') }}"
                                     class="form-control bg-dark border-dark text-light" placeholder="Digite seu Nome"
                                     aria-label="Recipient's username" aria-describedby="basic-addon2"
                                     title="Seu nome Completo">
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" name="email" value="{{ old('email') }}"
+                                <input type="text" name="email" id="email" value="{{ old('email') }}"
                                     class="form-control bg-dark border-dark text-light" placeholder="Digite seu E-mail"
                                     aria-label="Recipient's username" aria-describedby="basic-addon2"
                                     title="Este E-mail será utilizado para acessar sua conta">
@@ -47,7 +47,7 @@
                                 </button>
                             </div>
                             <div class="input-group mb-3">
-                                <select name="nivel" class="form-select bg-dark border-dark text-light"
+                                <select name="nivel" id="nivel" class="form-select bg-dark border-dark text-light"
                                     aria-label="Default select example">
                                     <option selected>Escolha sua função</option>
                                     <option value="recepcao">Recepção</option>
@@ -57,6 +57,9 @@
                             </div>
                             <button class="btn btn-outline-secondary w-100">Cadastrar</button>
                         </form>
+                        <div class="mt-3">
+                            Já é cadastrado? <a href="{{ route('login') }}">Entrar</a>
+                        </div>
                     </div>
                     <div class="login-footer mt-2">
                         @foreach ($errors->all() as $error)
@@ -76,13 +79,11 @@
     </script>
     <script src="{{ asset('js/all.min.js') }}"></script>
 
-    @push('scripts')
-        <script>
-            document.getElementById('button-addon2').addEventListener('click', () => {
-                let input = document.getElementById('inputpassword');
-                input.type = input.type != 'password' ? 'password' : 'text';
-                document.getElementById('iconeye').classList.toggle('fa-eye-slash');
-            });
+    <script>
+        document.getElementById('button-addon2').addEventListener('click', () => {
+            let input = document.getElementById('inputpassword');
+            input.type = input.type != 'password' ? 'password' : 'text';
+            document.getElementById('iconeye').classList.toggle('fa-eye-slash');
+        });
 
-        </script>
-    @endpush
+    </script>

@@ -42,6 +42,9 @@
                             </div>
                             <button class="btn btn-outline-secondary w-100">Entrar</button>
                         </form>
+                        <div class="mt-3">
+                            Ainda não possui cadastro? <a href="{{ route('cadastrar.usuario') }}">Cadastrar</a>
+                        </div>
                     </div>
                     <div class="login-footer mt-2">
                         @foreach ($errors->all() as $error)
@@ -60,8 +63,6 @@
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/all.min.js') }}"></script>
-
-    @push('scripts')
         <script>
             document.getElementById('button-addon2').addEventListener('click', () => {
                 let input = document.getElementById('inputpassword');
@@ -70,4 +71,3 @@
             });
 
         </script>
-    @endpush

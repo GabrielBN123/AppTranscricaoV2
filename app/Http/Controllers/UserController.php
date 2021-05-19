@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\novoUsuario;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -19,7 +20,7 @@ class UserController extends Controller
         return view('cadastrar');
     }
 
-    public function novoUsuario(Request $request)
+    public function novoUsuario(novoUsuario $request)
     {
         // $user = User::create([$request->all()]);
         User::create([

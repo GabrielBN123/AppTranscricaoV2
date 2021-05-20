@@ -33,7 +33,7 @@
                                     title="Seu nome Completo">
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" name="email" id="email" value="{{ old('email') }}"
+                                <input type="email" name="email" id="email" value="{{ old('email') }}"
                                     class="form-control bg-dark border-dark text-light" placeholder="Digite seu E-mail"
                                     aria-label="Recipient's username" aria-describedby="basic-addon2"
                                     title="Este E-mail será utilizado para acessar sua conta">

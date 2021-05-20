@@ -25,7 +25,7 @@ class novoUsuario extends FormRequest
     {
         return [
             'name' => ['required', 'min:3', 'max:255'],
-            'email ' => 'required',
+            'email' => 'required',
             'password' => 'required',
             'nivel' => 'required'
         ];

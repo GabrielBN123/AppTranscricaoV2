@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests\novoUsuario;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -22,13 +23,7 @@ class UserController extends Controller
 
     public function novoUsuario(novoUsuario $request)
     {
-        // $user = User::create([$request->all()]);
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-            'nivel' => $request->nivel
-        ]);
+        User::create($request->all());
 
         return redirect()->route('login');
     }

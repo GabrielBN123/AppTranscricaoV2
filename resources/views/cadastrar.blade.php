@@ -35,7 +35,7 @@
                             <div class="input-group mb-3">
                                 <input type="email" name="email" id="email" value="{{ old('email') }}"
                                     class="form-control bg-dark border-dark text-light" placeholder="Digite seu E-mail"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                    aria-label="email" aria-describedby="basic-addon2"
                                     title="Este E-mail será utilizado para acessar sua conta">
                             </div>
                             <div class="input-group mb-3">
@@ -49,8 +49,7 @@
                             <div class="input-group mb-3">
                                 <select name="nivel" id="nivel" class="form-select bg-dark border-dark text-light"
                                     aria-label="Default select example">
-                                    <option selected>Escolha sua função</option>
-                                    <option value="recepcao">Recepção</option>
+                                    <option value="recepcao" selected>Recepção</option>
                                     <option value="transcricao">Transcrição</option>
                                     <option value="pulpito">Pulpito</option>
                                 </select>

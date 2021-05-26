@@ -58,6 +58,9 @@ Route::group([
     Route::get('/', [TranscricaoController::class, 'index'])->name('painel.transcricao.index');
 });
 
+Route::get('/transcricao/{table}/{id}', [TranscricaoController::class, 'detalhes'])->name('painel.transcricao.show');
+Route::get('/transcricao/{table}/{id}', [TranscricaoController::class, 'detalhes'])->name('painel.transcricao.show');
+
 /*
 |--------------------------------------------------------------------------
 | ROTAS DA CADASTRAR

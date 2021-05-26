@@ -54,30 +54,39 @@ class TranscricaoController extends Controller
         switch ($table) {
             case 'apresentacaos':
                 $detail = Apresentacao::find($id);
+                $tabela = 'Apresentação';
                 break;
             case 'aviso':
                 $detail = Aviso::find($id);
+                $tabela = 'Aviso';
                 break;
             case 'pedidoOracao':
-                $teste = PedidoOracao::find($id);
+                $detail = PedidoOracao::find($id);
+                $tabela = 'Pedido de Oração';
                 break;
             case 'felicitacao':
                 $detail = Felicitacao::find($id);
+                $tabela = 'Felicitação';
                 break;
             case 'pedidoLouvor':
                 $detail = PedidoLouvor::find($id);
+                $tabela = 'Pedido de Louvor';
                 break;
             case 'acaoGracas':
                 $detail = AcaoGraca::find($id);
+                $tabela = 'Ação de Graças';
                 break;
             case 'apresentacaoRN':
                 $detail = ApresentacaoRN::find($id);
+                $tabela = 'Apresentação de Rescém Nascido';
                 break;
             case 'pedidoComunhao':
                 $detail = PedidoComunhao::find($id);
+                $tabela = 'Pedido de Comunhão';
                 break;
             case 'cartaApresentacao':
                 $detail = CartaApresentacao::find($id);
+                $tabela = 'Carta de Apresentação';
                 break;
             default:
                 $detail = null;
@@ -86,6 +95,7 @@ class TranscricaoController extends Controller
         if ($detail != null) {
             return view('painel.Modal.Detalhes', [
                 'Dados' => $detail,
+                'tabela' => $tabela,
                 'rotaindex' => route('painel.transcricao.index')
                 ]);
         } else {

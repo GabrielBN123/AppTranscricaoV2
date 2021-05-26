@@ -6,7 +6,7 @@
     <div class="container pt-5">
         <div class="row bg-light rounded">
             <div class="col-12 text-center py-3">
-                <h2>Detalhes do Formulário</h2>
+                <h2>Detalhes: {{ $tabela }}</h2>
             </div>
             <hr>
             <div class="col-2 py-2">

@@ -22,7 +22,7 @@ class TranscricaoController extends Controller
     {
         return view('painel.transcricao', [
             'Formulario' => [
-                Apresentacao::get(),
+                Apresentacao::orderBy('id', 'DESC')->get(),
                 Aviso::get(),
                 PedidoOracao::get(),
                 Felicitacao::get(),

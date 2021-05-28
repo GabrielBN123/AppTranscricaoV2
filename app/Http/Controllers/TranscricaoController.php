@@ -97,11 +97,52 @@ class TranscricaoController extends Controller
                 'Dados' => $detail,
                 'tabela' => $tabela,
                 'rotaindex' => route('painel.transcricao.index')
-                ]);
+            ]);
         } else {
             Redirect()->route('painel.transcricao.index');
         }
-
-        // return 'texto';
+    }
+    public function delete($table, $id)
+    {
+        switch ($table) {
+            case 'apresentacaos':
+                $detail = Apresentacao::find($id);
+                break;
+            case 'aviso':
+                $detail = Aviso::find($id);
+                break;
+            case 'pedidoOracao':
+                $detail = PedidoOracao::find($id);
+                break;
+            case 'felicitacao':
+                $detail = Felicitacao::find($id);
+                break;
+            case 'pedidoLouvor':
+                $detail = PedidoLouvor::find($id);
+                break;
+            case 'acaoGracas':
+                $detail = AcaoGraca::find($id);
+                break;
+            case 'apresentacaoRN':
+                $detail = ApresentacaoRN::find($id);
+                break;
+            case 'pedidoComunhao':
+                $detail = PedidoComunhao::find($id);
+                break;
+            case 'cartaApresentacao':
+                $detail = CartaApresentacao::find($id);
+                break;
+            default:
+                $detail = null;
+                break;
+        }
+        if ($detail != null) {
+            return view('painel.Modal.Detalhes', [
+                'Dados' => $detail,
+                'rotaindex' => route('painel.transcricao.index')
+            ]);
+        } else {
+            Redirect()->route('painel.transcricao.index');
+        }
     }
 }

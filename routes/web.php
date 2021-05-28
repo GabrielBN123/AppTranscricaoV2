@@ -56,10 +56,11 @@ Route::group([
     'prefix' => 'painel-transcricao'
 ], function () {
     Route::get('/', [TranscricaoController::class, 'index'])->name('painel.transcricao.index');
+    Route::get('/transcricao/{table}/{id}', [TranscricaoController::class, 'detalhes'])->name('painel.transcricao.show');
+    Route::get('/transcricao/delete/{table}/{id}', [TranscricaoController::class, 'delete'])->name('painel.transcricao.delete');
 });
 
-Route::get('/transcricao/{table}/{id}', [TranscricaoController::class, 'detalhes'])->name('painel.transcricao.show');
-Route::get('/transcricao/{table}/{id}', [TranscricaoController::class, 'detalhes'])->name('painel.transcricao.show');
+// Route::get('/transcricao/{table}/{id}', [TranscricaoController::class, 'detalhes'])->name('painel.transcricao.show');
 
 /*
 |--------------------------------------------------------------------------

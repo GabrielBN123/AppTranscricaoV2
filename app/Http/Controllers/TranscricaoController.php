@@ -99,50 +99,51 @@ class TranscricaoController extends Controller
                 'rotaindex' => route('painel.transcricao.index')
             ]);
         } else {
-            Redirect()->route('painel.transcricao.index');
+            return Redirect()->route('painel.transcricao.index');
         }
     }
     public function delete($table, $id)
     {
         switch ($table) {
             case 'apresentacaos':
-                $detail = Apresentacao::find($id);
+                $delete = Apresentacao::find($id);
                 break;
             case 'aviso':
-                $detail = Aviso::find($id);
+                $delete = Aviso::find($id);
                 break;
             case 'pedidoOracao':
-                $detail = PedidoOracao::find($id);
+                $delete = PedidoOracao::find($id);
                 break;
             case 'felicitacao':
-                $detail = Felicitacao::find($id);
+                $delete = Felicitacao::find($id);
                 break;
             case 'pedidoLouvor':
-                $detail = PedidoLouvor::find($id);
+                $delete = PedidoLouvor::find($id);
                 break;
             case 'acaoGracas':
-                $detail = AcaoGraca::find($id);
+                $delete = AcaoGraca::find($id);
                 break;
             case 'apresentacaoRN':
-                $detail = ApresentacaoRN::find($id);
+                $delete = ApresentacaoRN::find($id);
                 break;
             case 'pedidoComunhao':
-                $detail = PedidoComunhao::find($id);
+                $delete = PedidoComunhao::find($id);
                 break;
             case 'cartaApresentacao':
-                $detail = CartaApresentacao::find($id);
+                $delete = CartaApresentacao::find($id);
                 break;
             default:
-                $detail = null;
+                $delete = null;
                 break;
         }
-        if ($detail != null) {
-            return view('painel.Modal.Detalhes', [
-                'Dados' => $detail,
-                'rotaindex' => route('painel.transcricao.index')
-            ]);
-        } else {
-            Redirect()->route('painel.transcricao.index');
+        if ($delete != null) {
+            // return view('painel.Modal.Detalhes', [
+            //     'Dados' => $delete,
+            //     'rotaindex' => route('painel.transcricao.index')
+            // ]);
+            $delete->delete();
+            // Redirect()->route('painel.transcricao.index');
         }
+        return Redirect()->route('painel.transcricao.index');
     }
 }

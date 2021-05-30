@@ -23,7 +23,7 @@
                             @foreach ($Formulario[$id[1]] as $content)
                                 <div class="accordion-body">
                                     @if ($content->confirmado == null)
-                                        <form action="">
+                                        <form action="painel.transcricao.update" method="POST">
                                             <div class="row">
                                                 <div class="form-floating col-10">
                                                     <textarea class="form-control" placeholder="Leave a comment here"
@@ -61,12 +61,18 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Não</button>
-                                                        <a type="button"
-                                                            href="{{ route('painel.transcricao.show', ['table' => $id[0], 'id' => $content->id]) }}"
-                                                            class="btn btn-primary">
-                                                            Sim
-                                                        </a>
+                                                            data-bs-dismiss="modal">
+                                                            Não
+                                                        </button>
+                                                        <form
+                                                            action="{{ route('painel.transcricao.delete', ['table' => $id[0], 'id' => $content->id]) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="_method" value="DELETE">
+                                                            <button type="submit" class="btn btn-primary">
+                                                                Sim
+                                                            </button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

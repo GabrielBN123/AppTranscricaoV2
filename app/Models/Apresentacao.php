@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apresentacao extends Model
 {
+    
+    protected $table = 'apresentacaos';
+
+    protected $fillable = ['texto', 'confirmado', 'lido', 'user_id'];
+
     use HasFactory;
 }

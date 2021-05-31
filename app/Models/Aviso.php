@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aviso extends Model
 {
+    protected $table = 'avisos';
+
+    protected $fillable = ['texto', 'confirmado', 'lido', 'user_id'];
+
     use HasFactory;
 }

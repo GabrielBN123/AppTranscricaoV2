@@ -57,7 +57,7 @@ Route::group([
 ], function () {
     Route::get('/', [TranscricaoController::class, 'index'])->name('painel.transcricao.index');
     Route::get('/transcricao/{table}/{id}', [TranscricaoController::class, 'detalhes'])->name('painel.transcricao.show');
-    Route::post('/transcricao/{table}/{id}', [TranscricaoController::class, 'atualizar'])->name('painel.transcricao.update');
+    Route::put('/transcricao/{table}/{id}', [TranscricaoController::class, 'update'])->name('painel.transcricao.update');
     Route::delete('/transcricao/{table}/{id}', [TranscricaoController::class, 'delete'])->name('painel.transcricao.delete');
 });
 

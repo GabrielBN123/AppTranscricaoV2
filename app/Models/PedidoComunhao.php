@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class PedidoComunhao extends Model
 {
+    protected $table = 'pedido_comunhaos';
+
+    protected $fillable = ['texto', 'confirmado', 'lido', 'user_id'];
+
     use HasFactory;
 }

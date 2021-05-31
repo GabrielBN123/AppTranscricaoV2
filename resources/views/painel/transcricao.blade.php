@@ -7,6 +7,8 @@
     $count_table = count($Formulario[0]);
 @endphp --}}
     <div class="accordion px-5 pt-3" id="accordionPanelsStayOpenExample">
+        {{-- {{ dd($id) }} --}}
+        {{-- {{ dd($user->id) }} --}}
         @foreach ($forms as $title => $id)
             <div class="accordion-item pb-1 bg-secondary">
                 <div class="accordion-item">
@@ -23,11 +25,17 @@
                             @foreach ($Formulario[$id[1]] as $content)
                                 <div class="accordion-body">
                                     @if ($content->confirmado == null)
-                                        <form action="painel.transcricao.update" method="POST">
+                                        <form
+                                            action="{{ route('painel.transcricao.update', ['table' => $id[0], 'id' => $content->id]) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('put')
+                                            {{-- <input type="hidden" name=""> --}}
+                                            <input type="hidden" name="user_id" value="{{ $user->id }}">
                                             <div class="row">
                                                 <div class="form-floating col-10">
                                                     <textarea class="form-control" placeholder="Leave a comment here"
-                                                        id="floatingTextarea2"
+                                                        name="texto" id="floatingTextarea2"
                                                         style="height: 100px">{{ $content->texto }}</textarea>
                                                     <label for="floatingTextarea2"> ID: {{ $content->id }}</label>
                                                 </div>
@@ -99,19 +107,26 @@
                                             <div class="accordion-body">
                                                 @if (isset($content->texto))
                                                     @if ($content->confirmado == 1)
-                                                        <form action="">
+                                                        <form
+                                                            action="{{ route('painel.transcricao.update', ['table' => $id[0], 'id' => $content->id]) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('put')
+                                                            {{-- <input type="hidden" name=""> --}}
+                                                            <input type="hidden" name="user_id"
+                                                                value="{{ $user->id }}">
                                                             <div class="row">
                                                                 <div class="form-floating col-10">
                                                                     <textarea class="form-control"
-                                                                        placeholder="Leave a comment here"
+                                                                        placeholder="Leave a comment here" name="texto"
                                                                         id="floatingTextarea2"
                                                                         style="height: 100px">{{ $content->texto }}</textarea>
                                                                     <label for="floatingTextarea2"> ID:
                                                                         {{ $content->id }}</label>
                                                                 </div>
                                                                 <div class="col-2 py-4 px-5">
-                                                                    <a class="btn btn-danger rounded" title="Excluir"
-                                                                        data-bs-toggle="modal"
+                                                                    <a class="btn btn-danger rounded" href=""
+                                                                        title="Excluir" data-bs-toggle="modal"
                                                                         data-bs-target="#exampleModal-{{ $id[0] }}-{{ $content->id }}">
                                                                         <i class="fas fa-trash"></i>
                                                                     </a>

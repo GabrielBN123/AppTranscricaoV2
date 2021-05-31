@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFormRequest;
 use App\Models\AcaoGraca;
 use App\Models\Apresentacao;
 use App\Models\ApresentacaoRN;
@@ -13,14 +14,21 @@ use App\Models\PedidoComunhao;
 use App\Models\PedidoLouvor;
 use App\Models\PedidoOracao;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class TranscricaoController extends Controller
 {
 
+
     public function index()
     {
+        $user = Auth::user(); // Retrieve the currently authenticated user...
+        $id = Auth::id(); // Retrieve the currently authenticated user's ID...
+
         return view('painel.transcricao', [
+            'id' => $id,
+            'user' => $user,
             'Formulario' => [
                 Apresentacao::orderBy('id', 'DESC')->get(),
                 Aviso::get(),
@@ -46,6 +54,7 @@ class TranscricaoController extends Controller
             'rotaindex' => route('painel.transcricao.index')
         ]);
     }
+
     public function detalhes($table, $id)
     {
         // recupera por um  especifico
@@ -102,6 +111,53 @@ class TranscricaoController extends Controller
             return Redirect()->route('painel.transcricao.index');
         }
     }
+
+    public function update(StoreFormRequest $request, $table, $id)
+    {
+        switch ($table) {
+            case 'apresentacaos':
+                $table = Apresentacao::find($id);
+                break;
+            case 'aviso':
+                $table = Aviso::find($id);
+                break;
+            case 'pedidoOracao':
+                $table = PedidoOracao::find($id);
+                break;
+            case 'felicitacao':
+                $table = Felicitacao::find($id);
+                break;
+            case 'pedidoLouvor':
+                $table = PedidoLouvor::find($id);
+                break;
+            case 'acaoGracas':
+                $table = AcaoGraca::find($id);
+                break;
+            case 'apresentacaoRN':
+                $table = ApresentacaoRN::find($id);
+                break;
+            case 'pedidoComunhao':
+                $table = PedidoComunhao::find($id);
+                break;
+            case 'cartaApresentacao':
+                $table = CartaApresentacao::find($id);
+                break;
+            default:
+                $table = null;
+                break;
+        }
+        if ($table != null) {
+
+            $table->update([
+                $request->all(),
+                'user_id' => $request->user_id,
+                'confirmado' => true
+            ]);
+            // dd($request->all());
+        }
+        return Redirect()->route('painel.transcricao.index');
+    }
+
     public function delete($table, $id)
     {
         switch ($table) {

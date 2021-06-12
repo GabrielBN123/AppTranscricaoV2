@@ -22,15 +22,15 @@ class PulpitoController extends Controller
 
         return view('painel.pulpito', [
             'Formulario' => [
-                Apresentacao::get(),
-                Aviso::get(),
-                PedidoOracao::get(),
-                Felicitacao::get(),
-                PedidoLouvor::get(),
-                AcaoGraca::get(),
-                ApresentacaoRN::get(),
-                PedidoComunhao::get(),
-                CartaApresentacao::get(),
+                Apresentacao::where('confirmado', 1)->get(),
+                Aviso::where('confirmado', 1)->get(),
+                PedidoOracao::where('confirmado', 1)->get(),
+                Felicitacao::where('confirmado', 1)->get(),
+                PedidoLouvor::where('confirmado', 1)->get(),
+                AcaoGraca::where('confirmado', 1)->get(),
+                ApresentacaoRN::where('confirmado', 1)->get(),
+                PedidoComunhao::where('confirmado', 1)->get(),
+                CartaApresentacao::where('confirmado', 1)->get(),
             ],
             'forms' => [
                 'Apresentação de Visitante' => ['apresentacaos', 0],

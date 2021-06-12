@@ -44,6 +44,7 @@ Route::group([
     'prefix' => 'painel-recepcao'
 ], function () {
     Route::get('/', [RecepcaoController::class, 'index'])->name('painel.recepcao.index');
+    Route::post('/store/recepcao', [RecepcaoController::class, 'store'])->name('painel.recepcao.store');
 });
 
 /*

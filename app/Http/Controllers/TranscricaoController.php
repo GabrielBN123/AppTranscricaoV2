@@ -149,7 +149,8 @@ class TranscricaoController extends Controller
         if ($table != null) {
 
             $table->update([
-                $request->all(),
+                // $request->all(),
+                'texto' => $request->texto,
                 'user_id' => $request->user_id,
                 'confirmado' => true
             ]);

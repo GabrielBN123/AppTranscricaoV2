@@ -17,17 +17,35 @@
                     <div id="panelsStayOpen-collapseTwo-{{ $id[0] }}" class="accordion-collapse collapse"
                         aria-labelledby="panelsStayOpen-headingTwo-{{ $id[0] }}">
                         @foreach ($Formulario[$id[1]] as $content)
+                            @if ($content->lido != 1)
                                 <div class="accordion-body">
                                     @if (isset($content->texto))
                                         <div class="alert alert-secondary bg-transparent alert-dismissible fade show"
                                             role="alert">
                                             {{ $content->texto }}
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
                                         </div>
-                                    @else
-                                        <div class="alert alert-info">Não há <strong>{{ $title }}</strong>.</div>
                                     @endif
                                 </div>
+                            @endif
+                        @endforeach
+                        <hr>
+                        <h1 class="text-center">Lidos</h1>
+                        <hr>
+                        @foreach ($Formulario[$id[1]] as $content)
+                            @if ($content->lido == 1)
+                                <div class="accordion-body">
+                                    @if (isset($content->texto))
+                                        <div class="alert alert-secondary bg-transparent alert-dismissible fade show"
+                                            role="alert">
+                                            {{ $content->texto }}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                        </div>
+                                    @endif
+                                </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>

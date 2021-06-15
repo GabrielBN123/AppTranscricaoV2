@@ -12,6 +12,7 @@ use App\Models\PedidoComunhao;
 use App\Models\PedidoLouvor;
 use App\Models\PedidoOracao;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PulpitoController extends Controller
 {
@@ -45,5 +46,28 @@ class PulpitoController extends Controller
             ],
             'rotaindex' => route('painel.pulpito.index')
         ]);
+
+    }
+    public function update(Request $request)
+    {
+        $forms = [
+            'apresentacaos' => 'apresentacaos',
+            'aviso' => 'avisos',
+            'pedidoOracao' => 'pedido_oracaos',
+            'felicitacao' => 'felicitacaos',
+            'pedidoLouvor' => 'pedido_louvors',
+            'acaoGracas' => 'acao_gracas',
+            'apresentacaoRN' => 'apresentacao_r_n_s',
+            'pedidoComunhao' => 'pedido_comunhaos',
+            'cartaApresentacao' => 'carta_apresentacaos'
+        ];
+
+        foreach ($forms as $campo => $table) {
+            if ($request->$campo != null) {
+                DB::table($table)->update([
+                    ['lido' => 1]
+                ]);
+            }
+        }
     }
 }

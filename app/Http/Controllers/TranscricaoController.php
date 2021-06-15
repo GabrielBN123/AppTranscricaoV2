@@ -57,9 +57,6 @@ class TranscricaoController extends Controller
 
     public function detalhes($table, $id)
     {
-        // recupera por um  especifico
-        // $teste = Apresentacao::where('id', $id)->first();
-        // recupera direto pelo ID
         switch ($table) {
             case 'apresentacaos':
                 $detail = Apresentacao::find($id);
@@ -194,12 +191,7 @@ class TranscricaoController extends Controller
                 break;
         }
         if ($delete != null) {
-            // return view('painel.Modal.Detalhes', [
-            //     'Dados' => $delete,
-            //     'rotaindex' => route('painel.transcricao.index')
-            // ]);
             $delete->delete();
-            // Redirect()->route('painel.transcricao.index');
         }
         return Redirect()->route('painel.transcricao.index');
     }

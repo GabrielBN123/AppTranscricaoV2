@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\novoUsuario;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -23,7 +24,19 @@ class UserController extends Controller
 
     public function novoUsuario(novoUsuario $request)
     {
-        User::create($request->all());
+
+        $data = $request->all();
+
+        if ($request->foto->isValid()) {
+
+            $nomeFoto = Str::of($request->name)->slug('-') . '.' . $request->foto->getClientOriginalExtension();
+
+            $foto = $request->foto->storeAs('fotos', $nomeFoto);
+            $data['foto'] = $foto;
+        }
+
+
+        User::create($data);
 
         return redirect()->route('login');
     }

@@ -27,7 +27,8 @@ class novoUsuario extends FormRequest
             'name' => ['required', 'min:3', 'max:255'],
             'email' => 'required',
             'password' => 'required',
-            'nivel' => 'required'
+            'nivel' => 'required',
+            'foto' => ['nullable', 'image']
         ];
     }
 }

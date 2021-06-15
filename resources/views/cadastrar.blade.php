@@ -24,8 +24,9 @@
                         <hr>
                     </div>
                     <div class="login-body">
-                        <form method="POST" action="{{ route('novo.usuario') }}">
+                        <form method="POST" action="{{ route('novo.usuario') }}" enctype="multipart/form-data">
                             @csrf
+                            <input type="file" name="foto" id="foto">
                             <div class="input-group mb-3">
                                 <input type="text" name="name" id="name" value="{{ old('name') }}"
                                     class="form-control bg-dark border-dark text-light" placeholder="Digite seu Nome"

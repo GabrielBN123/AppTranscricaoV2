@@ -557,6 +557,24 @@
       ),
       'reference' => '06e2ebd25f2869e54a306dda991f7db58066f7f6',
     ),
+    'paragonie/random_compat' => 
+    array (
+      'pretty_version' => 'v9.99.100',
+      'version' => '9.99.100.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+    ),
+    'paragonie/sodium_compat' => 
+    array (
+      'pretty_version' => 'v1.16.1',
+      'version' => '1.16.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2e856afe80bfc968b47da1f4a7e1ea8f03d06b38',
+    ),
     'phar-io/manifest' => 
     array (
       'pretty_version' => '2.0.1',
@@ -772,6 +790,15 @@
       array (
       ),
       'reference' => 'e4573f47750dd6c92dca5aee543fa77513cbd8d3',
+    ),
+    'pusher/pusher-php-server' => 
+    array (
+      'pretty_version' => '7.0.1',
+      'version' => '7.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7757a09209d20ff95b077ae48dc25f49a6ad94a2',
     ),
     'ralouphie/getallheaders' => 
     array (

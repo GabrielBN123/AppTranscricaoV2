@@ -5,17 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/css.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Cadastrar</title>
 </head>
 
 <body>
     <div class="conteudo">
-        <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
         <div class="auth-container bg-dark">
             <div class="auth-left bg-light">
                 <div class="login-container">
@@ -26,7 +21,8 @@
                     <div class="login-body">
                         <form method="POST" action="{{ route('novo.usuario') }}" enctype="multipart/form-data">
                             @csrf
-                            <input type="file" name="foto" id="foto">
+                            <label for="foto" class="btn btn-dark">Selecionar foto</label>
+                            <input type="file" class="form-control" name="foto" id="foto" hidden>
                             <div class="input-group mb-3">
                                 <input type="text" name="name" id="name" value="{{ old('name') }}"
                                     class="form-control bg-dark border-dark text-light" placeholder="Digite seu Nome"
@@ -43,12 +39,14 @@
                                 <input type="password" id="inputpassword" name="password"
                                     class="form-control bg-dark border-dark text-light" placeholder="Digite sua senha"
                                     aria-label="Recipient's password" aria-describedby="button-addon2">
-                                <button class="btn btn-dark" type="button" id="button-addon2">
-                                    <i id="iconeye" class="far fa-eye"></i>
-                                </button>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-dark" type="button" id="button-addon2">
+                                            <i id="iconeye" class="far fa-eye"></i>
+                                        </button>
+                                    </div>
                             </div>
                             <div class="input-group mb-3">
-                                <select name="nivel" id="nivel" class="form-select bg-dark border-dark text-light"
+                                <select name="nivel" id="nivel" class="form-control bg-dark border-dark text-light"
                                     aria-label="Default select example">
                                     <option value="recepcao" selected>Recepção</option>
                                     <option value="transcricao">Transcrição</option>
@@ -74,16 +72,13 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
-    </script>
-    <script src="{{ asset('js/all.min.js') }}"></script>
-
+    <script src="{{ asset('js/app.js') }}"></script>
     <script>
         document.getElementById('button-addon2').addEventListener('click', () => {
             let input = document.getElementById('inputpassword');
             input.type = input.type != 'password' ? 'password' : 'text';
             document.getElementById('iconeye').classList.toggle('fa-eye-slash');
         });
-
     </script>
+</body>
+</html>

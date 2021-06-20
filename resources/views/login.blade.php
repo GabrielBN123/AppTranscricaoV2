@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/css.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Login</title>
 </head>
 
@@ -30,15 +27,21 @@
                                 <input type="text" name="email" value="{{ old('email') }}"
                                     class="form-control bg-dark border-dark text-light" placeholder="Digite seu login"
                                     aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <span class="input-group-text bg-dark text-light border-dark" id="basic-addon2"><i
-                                        class="fas fa-user"></i></span>
+                                <div class="input-group-append">
+                                    <span class="input-group-text bg-dark text-light border-dark" id="basic-addon2">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
                             </div>
                             <div class="input-group mb-3">
                                 <input type="password" id="inputpassword" name="password"
                                     class="form-control bg-dark border-dark text-light" placeholder="Digite sua senha"
                                     aria-label="Recipient's password" aria-describedby="button-addon2">
-                                <button class="btn btn-dark" type="button" id="button-addon2"><i id="iconeye"
-                                        class="far fa-eye"></i></button>
+                                <div class="input-group-append">
+                                    <button class="btn btn-dark" type="button" id="button-addon2">
+                                        <i id="iconeye" class="far fa-eye"></i>
+                                    </button>
+                                </div>
                             </div>
                             <button class="btn btn-outline-secondary w-100">Entrar</button>
                         </form>
@@ -59,15 +62,13 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        document.getElementById('button-addon2').addEventListener('click', () => {
+            let input = document.getElementById('inputpassword');
+            input.type = input.type != 'password' ? 'password' : 'text';
+            document.getElementById('iconeye').classList.toggle('fa-eye-slash');
+        });
     </script>
-    <script src="{{ asset('js/all.min.js') }}"></script>
-        <script>
-            document.getElementById('button-addon2').addEventListener('click', () => {
-                let input = document.getElementById('inputpassword');
-                input.type = input.type != 'password' ? 'password' : 'text';
-                document.getElementById('iconeye').classList.toggle('fa-eye-slash');
-            });
-
-        </script>
+</body>
+</html>

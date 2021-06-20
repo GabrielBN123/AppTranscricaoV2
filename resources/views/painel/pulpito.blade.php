@@ -63,7 +63,7 @@
             </div>
         @endforeach
     </div>
-    @push('scripts')
+    {{-- @push('scripts')
         <script src="{{ asset('js/pulpito.js') }}"></script>
-    @endpush
+    @endpush --}}
 @endsection

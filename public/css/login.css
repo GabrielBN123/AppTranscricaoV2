@@ -1,0 +1,36 @@
+.auth-container {
+    max-width: 100vw;
+    /* width: ; */
+    min-height: 100vh;
+    display: flex;
+}
+
+.auth-left {
+    width: 30vw;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    padding: 50px 20px;
+    width: 25vw;
+}
+
+.login-footer {
+    padding: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .auth-left {
+        min-width: 100vw;
+        max-width: 100vw;
+    }
+    .auth-right {
+        width: 0vw;
+    }
+    .login-container {
+        width: 100vw;
+    }
+}

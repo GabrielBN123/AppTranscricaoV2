@@ -1,0 +1,11 @@
+.conteudo {
+    min-height: 100vh;
+    max-width: 100vw;
+}
+
+.readed {
+    color: red;
+    text-decoration: line-through;
+}
+
+.footer {}

@@ -34,40 +34,39 @@ class PulpitoController extends Controller
                 CartaApresentacao::where('confirmado', 1)->get(),
             ],
             'forms' => [
-                'Apresentação de Visitante' => ['apresentacaos', 0],
-                'Avisos' => ['aviso', 1],
-                'Pedidos de Oração' => ['pedidoOracao', 2],
-                'Felicitações' => ['Felicitacao', 3],
-                'Pedidos de Louvor' => ['pedidoLouvor', 4],
-                'Ação de Graças' => ['acaoGracas', 5],
-                'Apresentação de Recém Nascidos' => ['apresentacaoRN', 6],
-                'Pedido de Comunhão' => ['pedidoComunhao', 7],
-                'Carta de Apresentação' => ['cartaApresentacao', 8],
+                'Apresentação de Visitante' => ['apresentacaos', 0, 'apresentacaos'],
+                'Avisos' => ['aviso', 1, 'avisos'],
+                'Pedidos de Oração' => ['pedidoOracao', 2, 'pedido_oracaos'],
+                'Felicitações' => ['Felicitacao', 3, 'felicitacaos'],
+                'Pedidos de Louvor' => ['pedidoLouvor', 4, 'pedido_louvors'],
+                'Ação de Graças' => ['acaoGracas', 5, ''],
+                'Apresentação de Recém Nascidos' => ['apresentacaoRN', 6, 'apresentacao_r_n_s'],
+                'Pedido de Comunhão' => ['pedidoComunhao', 7, 'pedido_comunhaos'],
+                'Carta de Apresentação' => ['cartaApresentacao', 8, 'carta_apresentacaos'],
             ],
             'rotaindex' => route('painel.pulpito.index')
         ]);
-
     }
     public function update(Request $request)
     {
-        $forms = [
-            'apresentacaos' => 'apresentacaos',
-            'aviso' => 'avisos',
-            'pedidoOracao' => 'pedido_oracaos',
-            'felicitacao' => 'felicitacaos',
-            'pedidoLouvor' => 'pedido_louvors',
-            'acaoGracas' => 'acao_gracas',
-            'apresentacaoRN' => 'apresentacao_r_n_s',
-            'pedidoComunhao' => 'pedido_comunhaos',
-            'cartaApresentacao' => 'carta_apresentacaos'
-        ];
+        // $forms = [
+        //     'apresentacaos' => 'apresentacaos',
+        //     'aviso' => 'avisos',
+        //     'pedidoOracao' => 'pedido_oracaos',
+        //     'felicitacao' => 'felicitacaos',
+        //     'pedidoLouvor' => 'pedido_louvors',
+        //     'acaoGracas' => 'acao_gracas',
+        //     'apresentacaoRN' => 'apresentacao_r_n_s',
+        //     'pedidoComunhao' => 'pedido_comunhaos',
+        //     'cartaApresentacao' => 'carta_apresentacaos'
+        // ];
 
-        foreach ($forms as $campo => $table) {
-            if ($request->$campo != null) {
-                DB::table($table)->update([
-                    ['lido' => 1]
-                ]);
-            }
-        }
+        // foreach ($forms as $campo => $table) {
+        //     if ($request->$campo != null) {
+        DB::table($request->tb)->where('id', $request->id)->update(
+            ['lido' => 1]
+        );
+        //     }
+        // }
     }
 }

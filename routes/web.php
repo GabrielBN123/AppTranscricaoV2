@@ -32,6 +32,7 @@ Route::group([
     Route::get('/', [PulpitoController::class, 'index'])->name('painel.pulpito.index');
     //Route::get('/', [PulpitoController::class, 'index'])->name('painel');
     Route::get('/config', [PulpitoController::class, 'index'])->name('painel.pulpito.config');
+    Route::get('/ajax_read/{tb}', [PulpitoController::class, 'get_ajax'])->name('ajax_read');
     Route::get('/readed/{tb}/{id}', [PulpitoController::class, 'update'])->name('readed');
 });
 

@@ -49,24 +49,25 @@ class PulpitoController extends Controller
     }
     public function update(Request $request)
     {
-        // $forms = [
-        //     'apresentacaos' => 'apresentacaos',
-        //     'aviso' => 'avisos',
-        //     'pedidoOracao' => 'pedido_oracaos',
-        //     'felicitacao' => 'felicitacaos',
-        //     'pedidoLouvor' => 'pedido_louvors',
-        //     'acaoGracas' => 'acao_gracas',
-        //     'apresentacaoRN' => 'apresentacao_r_n_s',
-        //     'pedidoComunhao' => 'pedido_comunhaos',
-        //     'cartaApresentacao' => 'carta_apresentacaos'
-        // ];
-
-        // foreach ($forms as $campo => $table) {
-        //     if ($request->$campo != null) {
         DB::table($request->tb)->where('id', $request->id)->update(
             ['lido' => 1]
         );
-        //     }
-        // }
+    }
+
+    public function get_ajax(Request $request)
+    {
+        $Formulario = [
+            Apresentacao::where('confirmado', 1)->get(),
+            Aviso::where('confirmado', 1)->get(),
+            PedidoOracao::where('confirmado', 1)->get(),
+            Felicitacao::where('confirmado', 1)->get(),
+            PedidoLouvor::where('confirmado', 1)->get(),
+            AcaoGraca::where('confirmado', 1)->get(),
+            ApresentacaoRN::where('confirmado', 1)->get(),
+            PedidoComunhao::where('confirmado', 1)->get(),
+            CartaApresentacao::where('confirmado', 1)->get(),
+        ];
+        $form = DB::table($request->tb)->where('confirmado', 1)->get();
+        return $form;
     }
 }
